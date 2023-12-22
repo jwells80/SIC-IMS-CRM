@@ -1,1 +1,1 @@
-# SIC-IMS-CRM
+# Sisters In Christ -IMS-CRM
