@@ -10,9 +10,17 @@ class Attendee(models.Model):
     state = models.CharField(max_length=100, blank=True)
     zip_code = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100, blank=True)
+    agreement_signed = models.BooleanField(default=False)
+    agreement_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class AttendeeSignUp(models.Model):
+    event = models.ForeignKey("event.Event", on_delete=models.CASCADE)
+    time_slot = models.TimeField()
+    attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
 
 
 class Volunteer(models.Model):
@@ -50,6 +58,7 @@ class VolunteerSignup(models.Model):
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE)
     agreement = models.ForeignKey(VolunteerAgreement, on_delete=models.CASCADE)
     event = models.ForeignKey("event.Event", on_delete=models.CASCADE)
+    time_period = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return f"{self.volunteer} - {self.agreement} - {self.event}"

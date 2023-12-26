@@ -4,12 +4,31 @@ from django.db import models
 class Event(models.Model):
     date = models.DateField()
     description = models.TextField()
-    attendees = models.ManyToManyField("crm.Attendee")
     volunteers = models.ManyToManyField("crm.Volunteer")
     categories = models.ManyToManyField("inventory.Category")
 
     def __str__(self):
         return self.date
+
+
+class EventTimeSlot(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    time_slot = models.TimeField()
+    openings = models.IntegerField()
+
+
+class EventCheckIn(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    attendee = models.ForeignKey("crm.Attendee", on_delete=models.CASCADE)
+    referrer = models.CharField(max_length=100)
+    checkin_time = models.DateTimeField(auto_now_add=True)
+    items = models.ManyToManyField("inventory.Item")
+
+    def __str__(self):
+        return self.event
+
+
+# TODO: Attendee check in / Reception view
 
 
 class AttendeeCheckOut(models.Model):
