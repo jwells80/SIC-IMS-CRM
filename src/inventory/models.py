@@ -3,10 +3,19 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    criteria = models.JSONField(blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+
+class CategoryCriteria(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=200, blank=True, null=True)
 
 
 class Item(models.Model):

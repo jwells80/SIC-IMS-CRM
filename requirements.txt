@@ -1,3 +1,4 @@
 django
 django-bootstrap5==23.3
 django-browser-reload==1.12.1
+pillow

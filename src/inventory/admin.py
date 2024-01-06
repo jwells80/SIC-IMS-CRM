@@ -1,3 +1,21 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    Category,
+    Item,
+)
+
+
+class ItemInline(admin.StackedInline):
+    model = Item
+    extra = 0
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = [ItemInline]
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    pass
