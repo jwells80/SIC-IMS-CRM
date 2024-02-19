@@ -1,0 +1,17 @@
+{%  extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-5xl mx-auto w-full">Checkout</h1>
+        <div id="button-pad" class="mx-auto flex p-2">
+            <ul>
+                {% for item in items %}
+                <li>
+                    <h3 class="text-2xl">{{ item.name }}</h3>
+                    <p class="text-lg">{{ item.description }}</p>
+                    <button class="btn btn-outline btn-primary">Im a button</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

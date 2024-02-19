@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "sistersinchrist"
+version = "0.1.0"
+description = "Inventory and CRM for Sisters In Christ"
+authors = ["Jason Wells <7544731+jwells80@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "5.0"
+django-tailwind = "^3.8.0"
+psycopg = "^3.1.17"
+django-browser-reload = "^1.12.1"
+
+[tool.poetry.group.dev.dependencies]
+django-debug-toolbar = "^4.3.0"
+pydevd-pycharm = "^241.9959.30"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

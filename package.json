@@ -1,0 +1,19 @@
+{
+  "name": "sistersinchrist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwind build -i src/home/frontend/css/main.css -o src/home/static/home/css/main.min.css --minify",
+    "watch": "tailwind build -i src/home/frontend/css/main.css -o src/home/static/home/css/main.min.css --minify --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.17",
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "daisyui": "^4.6.0"
+  }
+}

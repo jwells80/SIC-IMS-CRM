@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-228#vz2v=t+(wz&@l8_xr-&r&e@t%(kz2cbdco)e&$de)b89(n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_bootstrap5",
+    # "django_bootstrap5",
     "django_browser_reload",
+    "debug_toolbar",
     "event",
     "inventory",
     "crm",
@@ -54,6 +55,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "home.middleware.TimeZoneMiddleware",
 ]
 
 ROOT_URLCONF = "SistersInChrist.urls"
@@ -82,12 +85,16 @@ WSGI_APPLICATION = "SistersInChrist.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "django",
+        "USER": "django",
+        "PASSWORD": "django",
+        "HOST": "db",
+        "PORT": "5432",
     }
 }
 
-
+TIME_ZONE = "UTC"
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -105,6 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
 
 
 # Internationalization
@@ -128,3 +138,9 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+if DEBUG:
+    import socket
+
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[:-1] + "1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]

@@ -1,2 +1,1 @@
-django-browser-reload
-django-debug-toolbar
+pydevd-pycharm

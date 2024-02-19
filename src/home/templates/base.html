@@ -1,5 +1,5 @@
-{# Load the tag library #}
-{% load django_bootstrap5 %}
+{#{% load django_bootstrap5 %}#}
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,11 +8,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sisters in Christ</title>
+    <link rel="stylesheet" href="{% static 'home/css/main.min.css' %}">
     {# Load CSS and JavaScript #}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+{#    {% bootstrap_css %}#}
+{#    {% bootstrap_javascript %}#}
 </head>
-<body>
+<body class="w-full">
 {% block content %}
 {% endblock %}
 </body>
