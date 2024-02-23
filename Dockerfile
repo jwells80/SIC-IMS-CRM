@@ -6,6 +6,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 COPY ./requirements.txt /app
+COPY ./.pgpass /root/.sic_pgpass
+COPY ./.pg_service.conf /root/.pg_service.conf
+CMD chmod 600 /root/.sic_pgpass
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install -r requirements.txt
 

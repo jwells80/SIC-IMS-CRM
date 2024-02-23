@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -86,11 +87,10 @@ WSGI_APPLICATION = "SistersInChrist.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django",
-        "USER": "django",
-        "PASSWORD": "django",
-        "HOST": "db",
-        "PORT": "5432",
+        "OPTIONS": {
+            "service": "sic_service",
+            "passfile": "/root/.sic_pgpass",
+        },
     }
 }
 

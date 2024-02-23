@@ -2,5 +2,6 @@ django
 django-bootstrap5
 django-browser-reload
 pillow
-psycopg2
+psycopg
+django-unfold
 django-debug-toolbar
