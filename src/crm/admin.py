@@ -5,8 +5,18 @@ from .models import (
     Volunteer,
     VolunteerAgreement,
     VolunteerSignup,
+    AttendeeAgreement,
+    AgreementPart,
+    Agreement,
 )
 from event.models import VolunteerTime, AttendeeCheckOut
+from django.contrib.admin.sites import AdminSite
+from unfold.admin import ModelAdmin
+
+
+class AttendeeAgreementInline(admin.TabularInline):
+    model = AttendeeAgreement
+    extra = 0
 
 
 class AttendeeSignupInline(admin.TabularInline):
@@ -35,11 +45,27 @@ class VolunteerTimeInline(admin.TabularInline):
     extra = 0
 
 
+@admin.register(AgreementPart)
+class AgreementPartAdmin(ModelAdmin):
+    ...
+
+
+@admin.register(Agreement)
+class AgreementAdmin(ModelAdmin):
+    # inlines = [AgreementPartsInline]
+    ...
+
+
 @admin.register(Volunteer)
-class VolunteerAdmin(admin.ModelAdmin):
+class VolunteerAdmin(ModelAdmin):
     inlines = [VolunteerSignupInline, VolunteerTimeInline, VolunteerAgreementInline]
 
 
 @admin.register(Attendee)
-class AttendeeAdmin(admin.ModelAdmin):
+class AttendeeAdmin(ModelAdmin):
     inlines = [AttendeeCheckOutInline, AttendeeSignupInline]
+
+
+AdminSite.site_title = "Sisters in Christ"
+AdminSite.site_header = "Sisters in Christ"
+AdminSite.index_title = "Sisters in Christ Inventory Admin"

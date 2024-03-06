@@ -1,0 +1,14 @@
+{%  extends base.html %}
+
+{% block content %}
+<h1>Volunteer Login</h1>
+    <div id="volunteers">
+        <ul>
+            {% for volunteer in volunteers %}
+            <li>
+            {{ volunteer.name }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

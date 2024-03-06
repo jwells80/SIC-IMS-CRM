@@ -1,1 +1,2 @@
 pydevd-pycharm
+django-debug-toolbar

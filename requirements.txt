@@ -4,4 +4,4 @@ django-browser-reload
 pillow
 psycopg
 django-unfold
-django-debug-toolbar
+django-unicorn

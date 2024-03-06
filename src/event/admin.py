@@ -6,6 +6,7 @@ from .models import (
     AttendeeCheckOut,
     VolunteerTime,
 )
+from unfold.admin import ModelAdmin
 
 
 admin.site.register(VolunteerTime)
@@ -24,5 +25,5 @@ class AttendeeCheckOutInline(admin.TabularInline):
 
 
 @admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(ModelAdmin):
     inlines = [EventTimeSlotInline, EventCheckInInline, AttendeeCheckOutInline]
